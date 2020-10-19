@@ -4,8 +4,7 @@ pipelineJob('Hello world') {
             scm {
                 git {
                     remote {
-                        github('zloyplohoy/jenkins_the_ephemeral', 'ssh')
-                        credentials('github_deploy_key')
+                        github('AlexDexsoon/jenkins_the_ephemeral', 'https')
                     }
                     branch('master')
                 }

@@ -21,19 +21,6 @@ security:
     globalJobDslSecurityConfiguration:
         useScriptSecurity: false
 
-credentials:
-    system:
-        domainCredentials:
-            - credentials:
-                - basicSSHUserPrivateKey:
-                    scope: GLOBAL
-                    id: github_deploy_key
-                    username: git
-                    privateKeySource:
-                        directEntry:
-                            privateKey: ${GITHUB_DEPLOY_KEY}
-                    passphrase: ${GITHUB_DEPLOY_KEY_PASSPHRASE}
-
 jobs:
     - script: >
           job('Seed job') {
@@ -48,8 +35,7 @@ jobs:
               scm {
                   git {
                       remote {
-                          github('zloyplohoy/jenkins_the_ephemeral', 'ssh')
-                          credentials('github_deploy_key')
+                          github('AlexDexsoon/jenkins_the_ephemeral', 'https')
                       }
                   }
               }
