@@ -1,17 +1,17 @@
 version: "3.7"
 services:
-    jenkins:
-        build: 
-          context: .
-          args:
-            - JENKINS_VERSION=2.249.2-lts-alpine
-            - PLUGIN_LIST=configuration-as-code git github job-dsl startup-trigger-plugin workflow-aggregator
-        environment:
-            - CASC_JENKINS_CONFIG=/jcasc/jcasc.yml
-            - JAVA_OPTS="-Djenkins.install.runSetupWizard=false"
-        ports:
-            - "80:8080"
-        volumes:
-            - type: bind
-              source: ./jcasc.yml
-              target: /jcasc/jcasc.yml
+  jenkins:
+    build: 
+      context: .
+      args:
+      - JENKINS_VERSION=2.249.2-lts-alpine
+      - PLUGIN_LIST=configuration-as-code git github job-dsl startup-trigger-plugin workflow-aggregator
+    environment:
+    - CASC_JENKINS_CONFIG=/jcasc/jcasc.yml
+    - JAVA_OPTS="-Djenkins.install.runSetupWizard=false"
+    ports:
+    - "80:8080"
+    volumes:
+    - type: bind
+      source: ./jcasc.yml
+      target: /jcasc/jcasc.yml

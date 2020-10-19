@@ -1,47 +1,47 @@
 unclassified:
-    location:
-        url: "http://localhost/"
+  location:
+    url: "http://localhost/"
 
 jenkins:
-    authorizationStrategy:
-        loggedInUsersCanDoAnything:
-            allowAnonymousRead: false
-    securityRealm:
-        local:
-            users:
-                - id: ${ADMIN_USERNAME:-admin}
-                  password: ${ADMIN_PASSWORD:-admin}
-    crumbIssuer:
-        standard:
-            excludeClientIPFromCrumb: false
-    remotingSecurity:
-        enabled: true
+  authorizationStrategy:
+    loggedInUsersCanDoAnything:
+      allowAnonymousRead: false
+  securityRealm:
+    local:
+      users:
+      - id: ${ADMIN_USERNAME:-admin}
+        password: ${ADMIN_PASSWORD:-admin}
+  crumbIssuer:
+    standard:
+      excludeClientIPFromCrumb: false
+  remotingSecurity:
+    enabled: true
 
 security:
-    globalJobDslSecurityConfiguration:
-        useScriptSecurity: false
+  globalJobDslSecurityConfiguration:
+    useScriptSecurity: false
 
 jobs:
-    - script: >
-          job('Seed job') {
-              triggers {
-                  hudsonStartupTrigger {
-                      label('')
-                      quietPeriod('')
-                      nodeParameterName('')
-                      runOnChoice('')
-                  }
-              }
-              scm {
-                  git {
-                      remote {
-                          github('AlexDexsoon/jenkins_the_ephemeral', 'https')
-                      }
-                  }
-              }
-              steps {
-                  jobDsl {
-                      targets('jobs/*/definition.groovy')
-                  }
-              }
+- script: |
+    job('Seed job') {
+      triggers {
+        hudsonStartupTrigger {
+          label('')
+          quietPeriod('')
+          nodeParameterName('')
+          runOnChoice('')
+        }
+      }
+      scm {
+        git {
+          remote {
+            github('AlexDexsoon/jenkins_the_ephemeral', 'https')
           }
+        }
+      }
+      steps {
+        jobDsl {
+          targets('jobs/*/definition.groovy')
+        }
+      }
+    }

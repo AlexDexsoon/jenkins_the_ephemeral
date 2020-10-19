@@ -1,6 +1,0 @@
-configuration-as-code
-git
-github
-job-dsl
-startup-trigger-plugin
-workflow-aggregator

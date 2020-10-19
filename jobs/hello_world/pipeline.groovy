@@ -1,20 +1,20 @@
 pipeline {
-    agent {
-        node {
-            label 'master'
-        }
+  agent {
+    node {
+      label 'master'
     }
-    stages {
-        stage('Hello') {
-            steps {
-                sh 'echo Hello'
-            }
-        }
+  }
+  stages {
+    stage('Hello') {
+      steps {
+        sh 'echo Hello'
+      }
+    }
 
-        stage('world') {
-            steps {
-                sh 'echo world'
-            }
-        }
+    stage('world') {
+      steps {
+        sh 'echo world'
+      }
     }
+  }
 }
